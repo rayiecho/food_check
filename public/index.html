@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodCheck – Allergen & Nutrition Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>FoodCheck</h1>
+        <p>Check the allergens and the nutrition of the food you buy and cook with</p>
+    </header>
+    <form id ="search-form">
+        <select id="source">
+            <option value="products">Packaged products</option>
+            <option value="ingredients">Raw ingredients</option>
+        </select>
+                <input id="search" type="text" placeholder="e.g. rice, milk, biscuits..." required>
+        <button type="submit">Search</button>
+    </form>
+    <section id="controls">
+    <input id="filter-text" type="text" placeholder="Filter results by name....">
+
+    <select id="allergen">
+        <option value="">No allergen filter</option>
+        <option value="milk">Without milk</option>
+        <option value="gluten">Without gluten</option>
+        <option value="nuts">Without nuts</option>
+        <option value="peanuts">Without peanuts</option>
+        <option value="eggs">Without eggs</option>
+        <option value="soybeans">Without soy</option>
+    </select>
+    <select id="grade">
+        <option value="">Any health grade</option>
+        <option value="AB">Grade A or B only</option>
+        <option value="CDE">Grade C or D or E</option>
+    </select>
+    <select id="sort">
+        <option value="name">Sort: name (A-Z)</option>
+        <option value="calories">Sort:Lowest calories</option>
+        <option value="sugar">Sort:Lowest sugar</option>    
+        <option value="fat">Sort:Lowest fat</option>
+        <option value="protein">Sort:Highest Protein</option>
+    </select>
+    </section>
+      <p id="message">Search for a food to get started.</p>
+  <div id="results"></div>
+    <footer>
+    Data from <a href="https://world.openfoodfacts.org" target="_blank">Open Food Facts</a>
+    and <a href="https://fdc.nal.usda.gov" target="_blank">USDA FoodData Central</a>.
+    Values are per 100 g.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
