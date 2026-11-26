@@ -3,7 +3,7 @@
 FoodCheck helps restaurant owners and cooks check the **allergens** and **nutrition** of the food they buy and cook with. You can answer a customer's "does this contain nuts?" in seconds, label your menu correctly, and choose healthier suppliers.
 
 -  **Live app (via load balancer):** http://18.171.56.14
--  **Demo video:** VIDEO_LINK_HERE
+-  **Demo video:** https://youtu.be/cPq1IfaVpIE
 -  **Repository:** https://github.com/rayiecho/food_check
 
 ## Features
@@ -121,3 +121,41 @@ Result: the answers alternate between the two servers:
 3. **No API key in Open Food Facts.** To demonstrate secure key handling, I added USDA FoodData Central, whose key is kept server-side only.
 4. **Pasting long command blocks on the servers.** `apt-get` consumed the lines pasted after it, so I ran the install separately. `nano` was missing, so I created `.env` with `cat > .env <<'EOF'`.
 5. **Missing data:** some products lack nutrition values. These show as "–" and are sorted to the end.
+
+## AI Usage & CodeVibe Report
+
+This project was tracked with CodeVibe from the start of development
+(assignment record: "Summative - Building Responsive UI", Nov 24 → Nov 25).
+
+### Setup before development
+Before writing any code for this assignment, I disabled the Claude Code
+extension for this workspace and turned off VS Code's built-in AI features
+(`chat.disableAIFeatures`). No AI coding assistant was active in this project
+while I worked on it. I then installed CodeVibe, created the assignment record
+with the Department's fixed thresholds (20% maximum AI authorship, 100 minimum
+ownership), and linked the repository.
+
+### Why the AI authorship figure is high
+- **Pasted practice code:** A large part of the starting code was pasted from my
+  own earlier practice work. CodeVibe cannot tell the difference between pasted
+  code and AI-generated code, so it recorded these pastes as non-manual. This
+  put the early figure at 72.9%, even though the code is my own.
+- **Manual development:** I continued building the project by typing the code
+  myself, which brought the figure down to about 30% before I exported the
+  report.
+- **Effect of exporting:** When I ran "CodeVibe: Export Assignment Report", the
+  report file was saved inside the project folder. Right after that, the live
+  dashboard rose to 98.2% (status bar: 99% AI). CodeVibe appears to have
+  counted the newly written report file as non-manual code. I did not edit,
+  rename or regenerate the report after exporting it.
+
+### "Agentic AI use detected" flag
+CodeVibe labels any file changed on disk without typing in the editor as
+"agentic". No AI agent was running in this project. The flagged changes come
+from actions taken outside the editor, such as `npm install` updating
+`package.json`/`package-lock.json`, the report export writing its file, and
+large pastes from my practice code.
+
+### Ownership
+My ownership score is 100/100: every file was opened, read through, navigated
+and edited by me.

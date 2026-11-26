@@ -17,20 +17,20 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const source = sourceSelect.value;
   const search = searchInput.value.trim();
-  message.textContent = "⏳ Searching...";
+  message.textContent = "Searching...";
   results.innerHTML = "";
   try {
-    const response = await fetch("/api/" + source + "?q=" + encodeURIComponent(search));
+    const response = await fetch("/api/" + source + "?q=" + encodeURLComponent(search));
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-      throw new Error(data.error || "Something went wrong. Please try again.");
+      throw new Error(data.error || "Something went wrong. Please try again");
     }
     allItems = data;
     showResults();
-  } catch (err) {
+  } catch (error) {
     allItems = [];
-    const offline = err.message === "Failed to fetch";
-    message.textContent = "⚠️ " + (offline ? "Cannot reach the server. Check your internet connection." : err.message);
+    const offline = error.message === "Failed to fetch";
+    message.textContent = "⚠️ " + (offline ? "Cannot reach server. Check your internet connection." : err.message);
   }
 });
 
@@ -49,7 +49,7 @@ function showResults() {
 
   const sortBy = sortSelect.value;
   items.sort((a, b) => {
-    if (sortBy === "name") return a.name.localeCompare(b.name);
+    if (sortBy === "name") return a.name.locaCompare(b.name);
     const x = a[sortBy];
     const y = b[sortBy];
     if (x == null && y == null) return 0;
@@ -61,7 +61,7 @@ function showResults() {
   if (allItems.length === 0) {
     message.textContent = "No results found. Try another word.";
   } else {
-    message.textContent = "Showing " + items.length + " of " + allItems.length + " results";
+    message.textContent = "Showing" + items.length + " of " + allItems.length + " results";
   }
   results.innerHTML = items.map(cardHTML).join("");
 }
@@ -88,33 +88,33 @@ function cardHTML(item) {
   const gradeClass = item.grade === "?" ? "none" : item.grade;
   const sugarWidth = Math.min(item.sugar || 0, 100);
 
-  return `
-    <div class="card">
+  return`
+    <div class="Card">
       ${isProduct ? `<span class="grade grade-${gradeClass}">${item.grade}</span>` : ""}
       <h3>${safe(item.name)}</h3>
-      <p class="sub">${safe(isProduct ? item.brand : item.category)}</p>
+      <p class="sub>${safe(isProduct ? item.brand : item.category)}</p>
       <ul>
         <li>Calories <b>${show(item.calories, " kcal")}</b></li>
         <li>Sugar <b>${show(item.sugar, " g")}</b></li>
         <li>Fat <b>${show(item.fat, " g")}</b></li>
         ${isProduct ? `<li>Salt <b>${show(item.salt, " g")}</b></li>` : `<li>Protein <b>${show(item.protein, " g")}</b></li>`}
       </ul>
-      <div class="bar" title="Sugar per 100 g"><span style="width:${sugarWidth}%"></span></div>
+      <div class="bar" title="Sugar per 100 g"><span style="width":${sugarWidth}%"></span></div>
       <div>${allergens}</div>
     </div>`;
 }
 
-// Re-show results instantly when any filter or sort changes
+//Reshow results instant;y when any filter or sort changes
 [filterText, allergenSelect, gradeSelect, sortSelect].forEach((el) => {
   el.addEventListener("input", showResults);
 });
 
-// Allergen and grade filters only apply to packaged products
+//Allergen and grade filters only applies to packaged products
 sourceSelect.addEventListener("change", () => {
   const isIngredients = sourceSelect.value === "ingredients";
   allergenSelect.disabled = isIngredients;
   gradeSelect.disabled = isIngredients;
-  allergenSelect.value = "";
+  allergenSelect.value = " ";
   gradeSelect.value = "";
   allItems = [];
   results.innerHTML = "";
